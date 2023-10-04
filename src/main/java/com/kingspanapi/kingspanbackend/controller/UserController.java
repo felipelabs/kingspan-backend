@@ -2,6 +2,7 @@ package com.kingspanapi.kingspanbackend.controller;
 
 import com.kingspanapi.kingspanbackend.entity.User;
 import com.kingspanapi.kingspanbackend.repository.UserRepository;
+import com.kingspanapi.kingspanbackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,16 +15,16 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @PostMapping("/user")
     public User create(@RequestBody User user){
-        return userRepository.save(user);
+        return userService.createUser(user);
     }
 
     @GetMapping("/users")
     public List<User> getUsers(){
-        return userRepository.findAll();
+        return userService.getAllUsers();
     }
 
 }
