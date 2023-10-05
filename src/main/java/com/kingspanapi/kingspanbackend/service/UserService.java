@@ -50,4 +50,15 @@ public class UserService {
             throw new UseNotFoundException(id);
         }
     }
+
+    public void deleteUserById(Long id) {
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if (userOptional.isPresent()) {
+            User existingUser = userOptional.get();
+            userRepository.delete(existingUser);
+        } else {
+            throw new UseNotFoundException(id);
+        }
+    }
 }
