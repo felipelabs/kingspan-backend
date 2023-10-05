@@ -1,11 +1,16 @@
 package com.kingspanapi.kingspanbackend.service;
 
+
 import com.kingspanapi.kingspanbackend.entity.User;
+import com.kingspanapi.kingspanbackend.exception.UseNotFoundException;
 import com.kingspanapi.kingspanbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -19,5 +24,30 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public User getUserById(Long id) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            return userOptional.get();
+        } else throw new UseNotFoundException(id);
+    }
+
+    public User updateUserById(Long id, User updatedUser) {
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if (userOptional.isPresent()) {
+            User existingUser = userOptional.get();
+
+            existingUser.setName(updatedUser.getName());
+            existingUser.setUsername(updatedUser.getUsername());
+            existingUser.setEmail(updatedUser.getEmail());
+
+            User newUser = userRepository.save(existingUser);
+
+            return newUser;
+        } else {
+            throw new UseNotFoundException(id);
+        }
     }
 }
