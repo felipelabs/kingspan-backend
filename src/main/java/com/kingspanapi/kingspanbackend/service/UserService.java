@@ -43,9 +43,7 @@ public class UserService {
             existingUser.setUsername(updatedUser.getUsername());
             existingUser.setEmail(updatedUser.getEmail());
 
-            User newUser = userRepository.save(existingUser);
-
-            return newUser;
+            return userRepository.save(existingUser);
         } else {
             throw new UseNotFoundException(id);
         }
