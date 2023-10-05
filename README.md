@@ -51,15 +51,12 @@ Segue abaixo as rotas para testes:
 Lembrando que nos metodos `POST E PUT` é necessário passar como parametrô um JSON, segue abaixo como exemplo:
 
 ```
-$ http POST :8080/todos nome="Teste API" descricao="Teste" prioridade=1
-
-[
   {
     "email":"exemplo@exemplo.com",
     "username":"exemplo",
     "name":"exemplo"
   }
-]
+
 ```
 
 O Open API poderá ser visualizado em [docs](http://localhost:8080/docs) e o [swagger](http://localhost:8080/swagger-ui/index.html).
