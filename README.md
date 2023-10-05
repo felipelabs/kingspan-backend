@@ -62,4 +62,4 @@ $ http POST :8080/todos nome="Teste API" descricao="Teste" prioridade=1
 ]
 ```
 
-O OpenAPI poderá ser visualizado em [localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+O OpenAPI poderá ser visualizado em [localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs/)
